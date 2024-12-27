@@ -23,8 +23,6 @@ try:
         crs.execute(f"load data inpath '{filepath}' overwrite into table Online_sales")
         print('Data loaded Successfully')
     else:
-        filepath  = 'hdfs://localhost:9000/user/hive/warehouse/batch85.db/online_sales/online_sales_dataset.csv'
-        crs.execute(f"load data inpath '{filepath}' overwrite into table Online_sales")
         print('Data is already Available in table')
 
 except Exception:
