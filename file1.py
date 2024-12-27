@@ -3,7 +3,7 @@ from pyhive import hive
 db = 'batch85'
 crs = hive.connect(host='localhost',database=db).cursor()
 # column info
-columninfo = "InvoiceNo int,StockCode string,Description string,Quantity int,InvoiceDate timestamp,UnitPrice float,CustomerID float,Country string,Discount float,PaymentMethod string,ShippingCost float,\
+columninfo = "InvoiceNo int,StockCode string,Description string,Quantity int,InvoiceDate string,UnitPrice float,CustomerID float,Country string,Discount float,PaymentMethod string,ShippingCost float,\
 Category string,SalesChannel string,ReturnStatus string,ShipmentProvider string,WarehouseLocation string,OrderPriority string"
 #table creation
 crs.execute(f'Create table if not exists Online_sales({columninfo})row format \
