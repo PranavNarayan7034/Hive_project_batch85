@@ -23,18 +23,18 @@ try:
         crs.execute(f"load data inpath '{filepath}' overwrite into table Online_sales")
         print('Data loaded Successfully')
     else:
+        filepath  = 'hdfs://localhost:9000/user/hive/warehouse/batch85.db/online_sales/online_sales_dataset.csv'
         print('Data is already Available in table')
 
 except Exception:
     print('Error while loading data into table...!')
 
-
 # Analytical problems
+# 1) No.of payment methods in each country :
 
-
-
-
-
+crs.execute('select country,paymentmethod,count(*)as no_of_transactions from Online_sales\
+ group by Country,paymentmethod limit 20')
+print(crs.fetchall())
 
 
 
