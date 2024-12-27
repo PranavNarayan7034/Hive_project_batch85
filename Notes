@@ -1,0 +1,12 @@
+Hive project
+----------------------
+
+Dataset(kaggle.com)  --->  hdfs (store data) --> transfer data set into hive tables---> Analytics
+---> visualization using python
+
+
+dataset          : online_sales_dataset.csv    (kaggle.com)
+to store in hdfs :
+>>> hadoop fs -mkdir /hive_project
+>>> hadoop fs -put /home/pranav/Data/hive/archive/online_sales_dataset.csv /hive_project
+
