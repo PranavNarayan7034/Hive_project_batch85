@@ -23,6 +23,8 @@ try:
         crs.execute(f"load data inpath '{filepath}' overwrite into table Online_sales")
         print('Data loaded Successfully')
     else:
+        # filepath  = 'hdfs://localhost:9000/user/hive/warehouse/batch85.db/online_sales/online_sales_dataset.csv'
+        # crs.execute(f"load data inpath '{filepath}' overwrite into table Online_sales")
         print('Data is already Available in table')
 
 except Exception:
@@ -32,9 +34,32 @@ except Exception:
 # 1) No.of payment methods in each country :
 
 crs.execute('select country,paymentmethod,count(*)as no_of_transactions from Online_sales\
- group by Country,paymentmethod limit 20')
-print(crs.fetchall())
+ group by Country,paymentmethod')
+out = crs.fetchall()
+# print(out)
 
+x_column = 'country'
+crs.execute(f'select distinct {x_column} from Online_sales')
+x = crs.fetchall()
 
+import numpy as np
+x_values = np.arange(1,len(x)+1)
+# print(x_values)
 
+BT = []
+CC = []
+PP = []
+for i in out:
+    print(i)
+    if i[1] == 'Bank Transfer':
+        BT.append(i[2])
+    elif i[1] == 'Credit Card':
+        CC.append(i[2])
+    elif i[1] == 'paypall':
+        PP.append(i[2])
 
+print('****************')
+print(x)
+print(BT)
+print(CC)
+print(PP)
